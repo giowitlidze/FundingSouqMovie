@@ -1,0 +1,48 @@
+.movieDetails {
+    display: grid;
+    grid-template-areas:
+        "img title    title"
+        "img overview overview"
+        "img .        voteCount";
+    grid-template-rows: 44px 1fr 40px;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    max-width: 1000px;
+
+    & > img {
+        grid-area: img;
+        max-width: 600px;
+        margin-right: 15px;
+    }
+}
+
+.title {
+    grid-area: title;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    height: fit-content;
+    margin: 0;
+}
+
+.overview {
+    grid-area: overview;
+}
+
+.voteCount {
+    display: flex;
+    flex-direction: row;
+    grid-area: voteCount;
+    margin: auto 0;
+    align-items: center;
+    justify-content: flex-end;
+
+    & > svg {
+        height: 30px;
+        width: 30px;
+    }
+
+    & > p:nth-child(2) {
+        font-weight: bold;
+        font-size: 15px;
+    }
+}
