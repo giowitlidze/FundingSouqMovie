@@ -1,8 +1,10 @@
+@import "variables";
+@import "mixin";
+
 @font-face {
     font-family: "source sans pro";
     src: url("assets/fonts/source-sans-pro-v14-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-regular-f38472b9e378b8c936f55a92677f575ab69e414d7cc3706ecfefeacd994b7975.woff2");
 }
-
 html,
 body {
     height: 100%;
@@ -20,4 +22,129 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
     gap: 30px;
+}
+
+.movieBox {
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:hover > img {
+        filter: brightness(50%);
+    }
+
+    &:hover > .movieInfo {
+        display: flex;
+    }
+
+    & > img {
+        width: 100%;
+    }
+
+    & > p {
+        text-align: center;
+        font-size: 15px;
+        font-family: "source sans pro";
+        font-weight: 700;
+        margin: 0;
+
+        &:hover {
+            color: $text-hover;
+        }
+    }
+}
+
+.averageVote {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: $average-vote;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > p {
+        margin: 0;
+        color: map-get($text, color);
+        font-size: 15px;
+        font-weight: bold;
+    }
+}
+
+.movieInfo {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    display: none;
+}
+
+.info {
+    margin-right: 5px;
+    & > svg {
+        @include movieDetailsIcon;
+    }
+}
+
+.trailer {
+    & > svg {
+        @include movieDetailsIcon;
+    }
+}
+
+.movieDetails {
+    display: grid;
+    grid-template-areas:
+        "img title    title"
+        "img overview overview"
+        "img .        voteCount";
+    grid-template-rows: 44px 1fr 40px;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    max-width: 1000px;
+
+    & > img {
+        grid-area: img;
+        max-width: 600px;
+        margin-right: 15px;
+    }
+}
+
+.title {
+    grid-area: title;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    height: fit-content;
+    margin: 0;
+}
+
+.overview {
+    grid-area: overview;
+}
+
+.voteCount {
+    display: flex;
+    flex-direction: row;
+    grid-area: voteCount;
+    margin: auto 0;
+    align-items: center;
+    justify-content: flex-end;
+
+    & > svg {
+        height: 30px;
+        width: 30px;
+    }
+
+    & > p:nth-child(2) {
+        font-weight: bold;
+        font-size: 15px;
+    }
 }

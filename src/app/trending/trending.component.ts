@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../Models/movie';
+import { Movie } from '../shared/Models/movie';
 import { TrendingService } from './service/trending.service';
 import { TrendingDialogComponent } from './trending-dialog/trending-dialog.component';
 import { MatDialog } from "@angular/material/dialog";

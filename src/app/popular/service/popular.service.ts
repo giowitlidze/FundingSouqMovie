@@ -8,30 +8,29 @@ import { HttpSettings } from 'src/app/http/http-settings';
 @Injectable({
   providedIn: 'root'
 })
-export class TrendingService {
-  private url: string;
-  trendingMovies: Movie[] = [];
+export class PopularService {
+  url: string;
 
   constructor(private http: HttpClient, private httpSettings: HttpSettings) {
-    this.url = httpSettings.baseUrl + "trending/all/day";
+    this.url = httpSettings.baseUrl + "movie/popular"
   }
 
-  GetMovies(): Observable<Movie[]> {
+  GetPopularMovies(): Observable<Movie[]> {
     let movieList: Observable<Movie[]> = this.http.get<Movie[]>(this.url, this.httpSettings.httpOptions).
       pipe(
         retry(3),
         catchError(this.httpSettings.HandleError),
         map((data: any) => {
           let results: Array<Movie> = [];
-          for (let m of data.results) {
+          for (let popularMovies of data.results) {
             let movie: Movie = new Movie(
-              m.id,
-              m.title,
-              m.release_date,
-              m.vote_average,
-              m.overview,
-              m.backdrop_path,
-              m.vote_count);
+              popularMovies.id,
+              popularMovies.title,
+              popularMovies.release_date,
+              popularMovies.vote_average,
+              popularMovies.overview,
+              popularMovies.backdrop_path,
+              popularMovies.vote_count);
 
             results.push(movie);
           }
