@@ -1,0 +1,78 @@
+@import "variables";
+@import "mixin";
+
+.movieBox {
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:hover > img {
+        filter: brightness(50%);
+    }
+
+    &:hover > .movieDetails {
+        display: flex;
+    }
+
+    & > img {
+        width: 100%;
+    }
+
+    & > p {
+        text-align: center;
+        font-size: 15px;
+        font-family: "source sans pro";
+        font-weight: 700;
+        margin: 0;
+
+        &:hover {
+            color: $text-hover;
+        }
+    }
+}
+
+.averageVote {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: $average-vote;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > p {
+        margin: 0;
+        color: map-get($text, color);
+        font-size: 15px;
+        font-weight: bold;
+    }
+}
+
+.movieDetails {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    display: none;
+}
+
+.info {
+    margin-right: 5px;
+    & > svg {
+        @include movieDetailsIcon;
+    }
+}
+
+.trailer {
+    & > svg {
+        @include movieDetailsIcon;
+    }
+}

@@ -1,0 +1,3 @@
+@mixin movieDetailsIcon{
+    fill: map-get($text, color);
+}
