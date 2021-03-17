@@ -1,5 +1,5 @@
 <div class="movieContainer">
-    <div *ngFor="let movie of movieList" class="movieBox" (click)="movoToDetails(movie.id)">
+    <div *ngFor="let movie of movieList" class="movieBox">
         <img src={{movie.imgUrl}} alt="no img">
         <p>{{movie.title}}</p>
         <div class="averageVote">
@@ -23,5 +23,7 @@
                 </svg>
             </div>
         </div>
+
+        <button class="movoToDetails" (click)="movoToDetails(movie.id)">View Details</button>
     </div>
 </div>

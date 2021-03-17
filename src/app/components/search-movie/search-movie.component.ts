@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { SearchMovieService } from './service/search-movie.service';
 import { Movie } from '../../shared/Models/movie';
 import { MovieDetailsPopupComponent } from '../../shared/components/movie-details-popup/movie-details-popup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-movie',
@@ -12,7 +13,11 @@ import { MovieDetailsPopupComponent } from '../../shared/components/movie-detail
 export class SearchMovieComponent implements OnInit {
   movieList: Movie[] = [];
 
-  constructor(private trendingService: SearchMovieService, public dialog: MatDialog) { }
+  constructor(
+    private trendingService: SearchMovieService,
+    public dialog: MatDialog,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -41,5 +46,9 @@ export class SearchMovieComponent implements OnInit {
         voteCount: movie.voteCount,
       }
     });
+  }
+
+  movoToDetails(movieID: number) {
+    this.router.navigate(['/MovieDetails', movieID]);
   }
 }

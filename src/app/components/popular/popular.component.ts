@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Movie } from '../../shared/Models/movie';
 import { PopularService } from './service/popular.service';
 import { MovieDetailsPopupComponent } from '../../shared/components/movie-details-popup/movie-details-popup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-popular',
@@ -12,7 +13,11 @@ import { MovieDetailsPopupComponent } from '../../shared/components/movie-detail
 export class PopularComponent implements OnInit {
   popularMovieList: Movie[] = [];
 
-  constructor(private trendingService: PopularService, public dialog: MatDialog) {
+  constructor(
+    private trendingService: PopularService,
+    public dialog: MatDialog,
+    private router: Router
+  ) {
     this.trendingService.GetPopularMovies().subscribe(movies => {
       this.popularMovieList = movies;
     });
@@ -37,4 +42,7 @@ export class PopularComponent implements OnInit {
     });
   }
 
+  movoToDetails(movieID: number) {
+    this.router.navigate(['/MovieDetails', movieID]);
+  }
 }

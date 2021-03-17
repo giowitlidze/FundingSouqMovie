@@ -56,4 +56,31 @@ export class MovieDetailsService {
 
     return movieList;
   }
+
+  GetSimilarMovies(movieID: any) {
+    let movieList: Observable<Movie[]> = this.http.get<Movie[]>(this.url + movieID + "/similar", this.httpSettings.httpOptions).
+      pipe(
+        retry(3),
+        catchError(this.httpSettings.HandleError),
+        map((data: any) => {
+          let results: Array<Movie> = [];
+          for (let m of data.results) {
+            let movie: Movie = new Movie(
+              m.id,
+              m.title,
+              m.release_date,
+              m.vote_average,
+              m.overview,
+              m.backdrop_path,
+              m.vote_count);
+
+            results.push(movie);
+          }
+
+          return results;
+        })
+      );
+
+    return movieList;
+  }
 }

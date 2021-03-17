@@ -11,6 +11,7 @@ body {
 }
 body {
     margin: 0;
+    background-color: #fff;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -39,6 +40,10 @@ body {
         display: flex;
     }
 
+    &:hover > .movoToDetails {
+        display: block;
+    }
+
     & > img {
         width: 100%;
     }
@@ -53,6 +58,23 @@ body {
         &:hover {
             color: $text-hover;
         }
+    }
+
+    .movoToDetails {
+        display: none;
+        position: absolute;
+        top: 78px;
+        right: 0;
+        border: none;
+        border-radius: 5px;
+        background-color: #0f7b1f;
+        color: #fff;
+        padding: 5px;
+        outline: none;
+    }
+
+    .movoToDetails:hover{
+        cursor: pointer;
     }
 }
 
@@ -85,6 +107,7 @@ body {
     top: 4px;
     right: 5px;
     display: none;
+    z-index: 99;
 }
 
 .info {

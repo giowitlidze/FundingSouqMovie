@@ -2,6 +2,7 @@ const baseUrl: string = "http://image.tmdb.org/t/p/"
 const lowResolution: string = "w185"
 const highResolution: string = "w780"
 const logoResolution: string = "w92"
+const backgroundPoster: string = "w1280"
 
 export interface IGenre {
     id: number,
@@ -43,7 +44,7 @@ export class Movie {
 
     /**მაღალი გაფართოების სურათი ფილმის დეტალური ნახვისას. */
     get detailedImgUrl(): string {
-        return baseUrl + highResolution + this.imageName;
+        return baseUrl + backgroundPoster + this.imageName;
     }
 
     /**პოსტერი დეტალური ინფორმაციისთვის */

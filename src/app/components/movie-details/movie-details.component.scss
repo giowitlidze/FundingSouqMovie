@@ -7,6 +7,9 @@
         "poster genre     ."
         "poster prodComp  ."
         "poster Overview  Overview";
+    grid-template-columns: minmax(400px, auto) 1fr 1fr;
+    backdrop-filter: brightness(0.8);
+    background-image: linear-gradient(to right, rgb(0, 25, 43) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .poster {
@@ -20,6 +23,7 @@
     font-weight: bold;
     margin: 15px 0 0 0;
     grid-area: title;
+    color: map-get($text, color);
 }
 
 .movieOverview {
@@ -27,11 +31,13 @@
 
     & > p {
         font-size: 17px;
+        color: map-get($text, color);
     }
 
     & > h3 {
         font-weight: bold;
         font-size: 19px;
+        color: map-get($text, color);
     }
 }
 
@@ -71,6 +77,12 @@
         & > img {
             width: 92px;
             height: 29px;
+            background-color: #fff;
+        }
+
+        & > P {
+            color: map-get($text, color);
+            max-width: 92px;
         }
     }
 
@@ -78,5 +90,38 @@
         font-weight: bold;
         font-size: 19px;
         width: 100%;
+        color: map-get($text, color);
+    }
+}
+
+.backgroundPoster {
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    width: calc(100% - 400px);
+    height: 600px;
+}
+
+::ng-deep {
+    body {
+        background: #00192b;
+    }
+}
+
+.similarMovies {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    padding: 0 15px;
+
+    .movieBox {
+        & > p {
+            color: map-get($text, color);
+        }
+
+        & > p:hover {
+            color: $text-hover;
+        }
     }
 }
