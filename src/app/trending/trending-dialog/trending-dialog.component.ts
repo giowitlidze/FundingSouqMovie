@@ -18,6 +18,10 @@ export class TrendingDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
+    this.closeDialog();
+  }
+
+  closeDialog() {
     this.dialogRef.close();
   }
 }

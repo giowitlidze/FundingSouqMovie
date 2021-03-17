@@ -5,13 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TrendingComponent } from './trending/trending.component';
 import { TrendingDialogComponent } from './trending/trending-dialog/trending-dialog.component';
+import { PopularComponent } from './popular/popular.component';
+import { PopularDialogComponent } from './popular/popular-dialog/popular-dialog.component';
+import { SearchMovieComponent } from './search-movie/search-movie.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { PopularComponent } from './popular/popular.component';
-import { PopularDialogComponent } from './popular/popular-dialog/popular-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MovieDetailsPopupComponent } from './shared/movie-details-popup/movie-details-popup.component';
+import { SearchDialogComponent } from './search-movie/search-dialog/search-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,10 @@ import { PopularDialogComponent } from './popular/popular-dialog/popular-dialog.
     TrendingComponent,
     TrendingDialogComponent,
     PopularComponent,
-    PopularDialogComponent
+    PopularDialogComponent,
+    SearchMovieComponent,
+    MovieDetailsPopupComponent,
+    SearchDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +35,9 @@ import { PopularDialogComponent } from './popular/popular-dialog/popular-dialog.
     BrowserAnimationsModule,
     MatTabsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } }

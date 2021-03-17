@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { Movie } from '../../shared/Models/movie';
-import { HttpSettings } from 'src/app/http/http-settings';
+import { HttpSettings } from 'src/app/shared/http/http-settings';
 
 @Injectable({
   providedIn: 'root'

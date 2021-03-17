@@ -89,14 +89,40 @@ body {
 
 .info {
     margin-right: 5px;
+    position: relative;
+    height: 18px;
+
+    & > .iconBackground {
+        @include iconBackground;
+    }
+
     & > svg {
         @include movieDetailsIcon;
+    }
+
+    &:hover .iconBackground {
+        width: 25px;
+        height: 25px;
+        opacity: 0.2;
     }
 }
 
 .trailer {
+    position: relative;
+    height: 18px;
+
+    & > .iconBackground {
+        @include iconBackground;
+    }
+
     & > svg {
         @include movieDetailsIcon;
+    }
+
+    &:hover .iconBackground {
+        width: 25px;
+        height: 25px;
+        opacity: 0.2;
     }
 }
 
@@ -109,6 +135,7 @@ body {
     grid-template-rows: 44px 1fr 40px;
     grid-template-columns: 0.5fr 0.5fr 0.5fr;
     max-width: 1000px;
+    position: relative;
 
     & > img {
         grid-area: img;
@@ -146,5 +173,26 @@ body {
     & > p:nth-child(2) {
         font-weight: bold;
         font-size: 15px;
+    }
+}
+
+.closeBtn {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    &:hover > svg {
+        opacity: 0.7;
+        animation: rotateIn 1s;
+    }
+}
+
+@keyframes rotateIn {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

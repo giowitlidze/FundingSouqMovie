@@ -1,5 +1,14 @@
+<div class="searchContainer">
+    <input #searchField type="search" name="search" id="search" placeholder="Search Movie" class="searchField"
+        (keyup)="onSearchKeyPress($event)">
+
+    <button mat-raised-button color="primary" class="searchBtn" (click)="searchMovie(searchField.value)">
+        <span>Search</span>
+    </button>
+</div>
+
 <div class="movieContainer">
-    <div *ngFor="let movie of popularMovieList" class="movieBox">
+    <div *ngFor="let movie of movieList" class="movieBox">
         <img src={{movie.imgUrl}} alt="no img">
         <p>{{movie.title}}</p>
         <div class="averageVote">

@@ -8,15 +8,29 @@ import { HttpSettings } from 'src/app/shared/http/http-settings';
 @Injectable({
   providedIn: 'root'
 })
-export class TrendingService {
+export class SearchMovieService {
   private url: string;
   trendingMovies: Movie[] = [];
 
   constructor(private http: HttpClient, private httpSettings: HttpSettings) {
-    this.url = httpSettings.baseUrl + "trending/all/day";
+    this.url = httpSettings.baseUrl + "search/movie";
   }
 
-  GetMovies(): Observable<Movie[]> {
+  SearchMovies(movieName: string): Observable<Movie[]> {
+    // this.httpSettings.AddParams("language", "en-US");
+    // this.httpSettings.AddParams("query", movieName);
+    // this.httpSettings.AddParams("page", "1");
+    // this.httpSettings.AddParams("include_adult", "false");
+
+    let newParams = [
+      ["language", "en-US"],
+      ["query", movieName],
+      ["page", "1"],
+      ["include_adult", "false"]
+    ]
+
+    this.httpSettings.AddParams(newParams);
+
     let movieList: Observable<Movie[]> = this.http.get<Movie[]>(this.url, this.httpSettings.httpOptions).
       pipe(
         retry(3),
