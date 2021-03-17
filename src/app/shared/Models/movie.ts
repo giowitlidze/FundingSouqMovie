@@ -1,34 +1,58 @@
-// export interface Movie {
-//     id: number,
-//     title: number,
-//     release_date: string,
-//     vote_average: number,
-//     overview: string,
-//     imgUrl: string
-// }
+const baseUrl: string = "http://image.tmdb.org/t/p/"
+const lowResolution: string = "w185"
+const highResolution: string = "w780"
+const logoResolution: string = "w92"
 
-export class Movie implements Movie {
-    private baseUrl: string = "http://image.tmdb.org/t/p/"
-    private lowResolution: string = "w185"
-    private highResolution: string = "w780"
+export interface IGenre {
+    id: number,
+    name: string
+}
 
+export class ProductionCompanies {
     constructor(
-        public id: number,
-        public title: number,
-        public releaseDate: string,
-        public voteAverage: number,
-        public overview: string,
-        public imageName: string,
-        public voteCount: number
+        public id: number = 0,
+        public logoName: string,
+        public name: string,
+        public originCountry: string,
+    ) { }
+
+    get logoPath() {
+        return baseUrl + logoResolution + this.logoName
+    }
+
+}
+
+export class Movie {
+    constructor(
+        public id: number = 0,
+        public title?: string,
+        public releaseDate?: string,
+        public voteAverage: number = 0,
+        public overview?: string,
+        public imageName?: string,
+        public voteCount: number = 0,
+        public genres: Array<IGenre> = [],
+        public posterName?: string,
+        public productionCompanies: Array<ProductionCompanies> = [],
     ) { }
 
     /**დაბალი გაფართოების სურათი ფილმების სიისათვის. */
-    get imgUrl() {
-        return this.baseUrl + this.lowResolution + this.imageName;
+    get imgUrl(): string {
+        return baseUrl + lowResolution + this.imageName;
     }
 
     /**მაღალი გაფართოების სურათი ფილმის დეტალური ნახვისას. */
-    get detailedImgUrl() {
-        return this.baseUrl + this.highResolution + this.imageName;
+    get detailedImgUrl(): string {
+        return baseUrl + highResolution + this.imageName;
+    }
+
+    /**პოსტერი დეტალური ინფორმაციისთვის */
+    get posterPath(): string {
+        return baseUrl + highResolution + this.posterName;
+    }
+
+    /**ფილმის გამოშვების წელი */
+    get releaseYear(): string {
+        return (this.releaseDate == null) ? "" : this.releaseDate.split("-")[0];
     }
 }

@@ -1,0 +1,23 @@
+<div class="modetailsContainer">
+    <!-- <img src={{movieDetails.detailedImgUrl}} alt="no image"> -->
+    <h1 class="title">{{movieDetails.title}} ({{movieDetails.releaseYear}})</h1>
+
+    <div class="movieOverview">
+        <h3> Overview</h3>
+        <p>{{movieDetails.overview}}</p>
+    </div>
+    <img src={{movieDetails.posterPath}} alt="no image" class="poster">
+    <div class="genreList">
+        <div *ngFor="let genre of movieDetails.genres" class="genre">
+            <span>{{genre.name}}</span>
+        </div>
+    </div>
+
+    <div class="prodComp">
+        <h3>Production Companies</h3>
+        <div *ngFor="let pcomp of movieDetails.productionCompanies">
+            <img src={{pcomp.logoPath}} alt="no image">
+            <p>{{pcomp.name}}</p>
+        </div>
+    </div>
+</div>

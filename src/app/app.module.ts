@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TrendingComponent } from './trending/trending.component';
-import { TrendingDialogComponent } from './trending/trending-dialog/trending-dialog.component';
-import { PopularComponent } from './popular/popular.component';
-import { PopularDialogComponent } from './popular/popular-dialog/popular-dialog.component';
-import { SearchMovieComponent } from './search-movie/search-movie.component';
+import { TrendingComponent } from './components/trending/trending.component';
+import { PopularComponent } from './components/popular/popular.component';
+import { SearchMovieComponent } from './components/search-movie/search-movie.component';
+import { MovieDetailsPopupComponent } from './shared/components/movie-details-popup/movie-details-popup.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { PageNotfoundComponent } from './shared/components/page-notfound/page-notfound.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -15,19 +16,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { MovieDetailsPopupComponent } from './shared/movie-details-popup/movie-details-popup.component';
-import { SearchDialogComponent } from './search-movie/search-dialog/search-dialog.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrendingComponent,
-    TrendingDialogComponent,
     PopularComponent,
-    PopularDialogComponent,
     SearchMovieComponent,
     MovieDetailsPopupComponent,
-    SearchDialogComponent
+    MovieDetailsComponent,
+    HomeComponent,
+    PageNotfoundComponent
   ],
   imports: [
     BrowserModule,
